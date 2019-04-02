@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+    
+</head>
+
+<body>
+    <h1 class='align-items-center ml-5'>KNOTS and CROSSES</h1>
+    <div>
+        <div id="choosePlayer" class="form-row ml-5 mt-5">
+            <label for="player"><h4>CHOOSE PLAYER</h4></label>
+            <select  id="player" class="form-group col-4 ml-4">
+                <option value="1">Player 1</option>
+                <option value="2">Player 2</option>
+            </select>
+            
+        </div>
+        <div id="divButton" class="form-row mt-5 ml-5">
+            <button type='submit' class=" col-4 btn btn-dark" id="submitPlayer">Start</button>
+        </div>
+    </div>
+    <div id="gameBoard">
+        <table id="table" >
+            <tr>
+                <td class ='cell' id="0"></td>
+                <td class ='cell' id="1"></td>
+                <td class ='cell' id="2"></td>
+            </tr>
+            <tr>
+                <td class ='cell' id="3"></td>
+                <td class ='cell' id="4"></td>
+                <td class ='cell' id="5"></td>
+            </tr>
+            <tr>
+                <td class ='cell' id="6"></td>
+                <td class ='cell' id="7"></td>
+                <td class ='cell' id="8"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="gameOver" id="gameOver"></div>
+</body>
+</html>
