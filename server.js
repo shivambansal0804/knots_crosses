@@ -18,8 +18,9 @@ const socketio = require('socket.io')
 const io = socketio(server)
 const PORT= process.env.PORT|| 4000
 allSocketIds=[]
-var serverTurn
+
 io.on('connection',(socket)=>{
+var serverTurn
 allSocketIds.push(socket.id)
 console.log(allSocketIds)
 knots=[]
