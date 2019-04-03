@@ -18,9 +18,9 @@ const socketio = require('socket.io')
 const io = socketio(server)
 const PORT= process.env.PORT|| 4000
 allSocketIds=[]
-
-io.on('connection',(socket)=>{
 var serverTurn
+io.on('connection',(socket)=>{
+
 allSocketIds.push(socket.id)
 console.log(allSocketIds)
 knots=[]
@@ -61,7 +61,7 @@ crosses=[]
          else{
           knots.push(data.idClick)   
          }
-         if(knots.length>=3||crosses.lenght>=3){
+         if(knots.length>=3||crosses.length>=3){
                 console.log('knots:'+knots)
                 console.log('crosses:'+crosses)
                 winCombos.forEach((combo)=>{
@@ -76,7 +76,9 @@ crosses=[]
                         io.emit('gameOver',{
                             winningCombo: combo,
                             playerWon: data.player
+                            
                         })
+                        console.log(combo)
                     }
                     
                 })
