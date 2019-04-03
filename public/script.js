@@ -68,15 +68,31 @@ $(()=>{
         if(currTurn==1){
          document.getElementById('table').addEventListener('click',Clicked)
          socket.on('done',(data)=>{
-           
-            $('#'+data.id).text((data.player==1)?'X':'O')
+           if(data.player==1){
+            $('#'+data.id)
+            .attr('style','color: rgb(242, 235, 211)')
+            .text('X')
+           }else {
+            $('#'+data.id)
+            .attr('style','color: rgba(0,0,0,.54)')
+            .text('O')
+           }
+            
             document.getElementById('table').removeEventListener('click',Clicked)
             takeTurn(data.turn)
            })
         }
         else{
             socket.on('done',(data)=>{
-            $('#'+data.id).text((data.player==1)?'X':'O')
+                if(data.player==1){
+                    $('#'+data.id)
+                    .attr('style','color: rgb(242, 235, 211)')
+                    .text('X')
+                   }else {
+                    $('#'+data.id)
+                    .attr('style','color: rgba(0,0,0,.54)')
+                    .text('O')
+                   }
             let varTurn=1
             takeTurn(varTurn)
             })
@@ -84,11 +100,13 @@ $(()=>{
        socket.on('gameOver',(data)=>{
            console.log(data.winningCombo)
         $('#'+data.winningCombo[0])
-        .attr('style','background-color: green')
+        .attr('style','background-color: #ffcc99;')
+
         $('#'+data.winningCombo[1])
-        .attr('style','background-color: green')
+        .attr('style','background-color: #ffcc99;')
+
         $('#'+data.winningCombo[2])
-        .attr('style','background-color: green')
+        .attr('style','background-color: #ffcc99;')
         
         
             $('#gameOver')
