@@ -81,6 +81,22 @@ $(()=>{
             takeTurn(varTurn)
             })
         }
+       socket.on('gameOver',(data)=>{
+           console.log(data.winningCombo)
+        $('#'+data.winningCombo[0])
+        .attr('style','background-color: green')
+        $('#'+data.winningCombo[1])
+        .attr('style','background-color: green')
+        $('#'+data.winningCombo[2])
+        .attr('style','background-color: green')
+        
+        
+            $('#gameOver')
+            .attr('style','display: block')
+            .text(data.playerWon+' won')
+
+       })
+
         }
 //  let turn = true
 //  startGame()
