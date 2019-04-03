@@ -16,6 +16,7 @@ const app = express()
 const server = http.createServer(app)
 const socketio = require('socket.io')
 const io = socketio(server)
+const PORT= process.env.PORT|| 4000
 allSocketIds=[]
 var serverTurn
 io.on('connection',(socket)=>{
@@ -92,6 +93,6 @@ crosses=[]
 
 app.use('/', express.static(__dirname + '/public'))
 
-server.listen(4000,()=>{
+server.listen(PORT,()=>{
     console.log('server started on 4000')
 })
