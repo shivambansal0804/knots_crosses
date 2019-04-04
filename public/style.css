@@ -10,6 +10,42 @@ td{
 	font-size:  50px;
 
 }
+#cross1{
+    height:10px;
+   
+    position: absolute;
+    top:45%;
+    left:35%;
+    background-color:rgb(242, 235, 211);
+    border-radius: 10%;
+    transform:rotate(45deg);
+    transition: 1s;
+    /* animation: growCross1 1s  1  forwards; */
+}
+#cross2{
+    height:10px;
+    
+    position: absolute;
+    top:45%;
+    left:35%;
+    background-color:rgb(242, 235, 211);
+    border-radius: 10%;
+    transform:rotate(-45deg);
+    transition: 1s;
+    /* animation: growCross2 1s  1  forwards; */
+}
+#circle{
+    opacity:0;
+    border-radius: 100%;
+    
+    position: absolute;
+    top:18%;
+    left:35%;
+    border:solid rgb(0,0,0,.54) 10px;
+    /* animation: growCircle 1.2s 1  forwards; */
+    
+}
+
 #gameBoard{
     position:relative;
     height:600px;
@@ -53,4 +89,68 @@ table tr td:last-child{
     left:35%;
     top:30%;
     
+}
+@keyframes growCross1{
+    0%{
+        opacity:0;
+        width:0px;
+        transform:rotate(-45deg);
+        transition: 0.5s
+        
+    }
+    50%{
+        opacity:0.5;
+        width:200px;
+        
+    }
+    100%{
+        opacity:1;
+        width: 400px;
+        transform: rotate(45deg);
+        transition: 0.5s
+    }
+}
+@keyframes growCross2{
+    0%{
+        opacity: 0;
+        width:0px;
+        transform:rotate(45deg)
+        
+    }
+    50%{
+        opacity:0.5;
+        width:200px;
+        
+
+    }
+    100%{
+        opacity:1;
+        width: 400px;
+        transform: rotate(-45deg);
+        transition: 0.5s
+    }
+}
+@keyframes growCircle{
+    0%{
+        height:0px;
+        width: 0px;
+        opacity: 0
+    }
+    50%{
+        opacity:0.5
+    }
+    100%{
+        height:420px;
+        width:400px;
+        opacity:1;
+    }
+}
+@keyframes showWin{
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+
 }

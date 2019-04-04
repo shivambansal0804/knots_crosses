@@ -90,7 +90,7 @@ $(()=>{
                     .text('X')
                    }else {
                     $('#'+data.id)
-                    .attr('style','color: rgba(0,0,0,.54)')
+                    .attr('style','color: rgb(0,0,0,.54)')
                     .text('O')
                    }
             let varTurn=1
@@ -98,7 +98,9 @@ $(()=>{
             })
         }
        socket.on('gameOver',(data)=>{
-           console.log(data.winningCombo)
+           
+           if(data.winningCombo){
+        console.log(data.winningCombo)
         $('#'+data.winningCombo[0])
         .attr('style','background-color: #ffcc99;')
 
@@ -106,12 +108,27 @@ $(()=>{
         .attr('style','background-color: #ffcc99;')
 
         $('#'+data.winningCombo[2])
+           
         .attr('style','background-color: #ffcc99;')
+           }
+         if(data.playerWon==1){
+             $('#table').hide()
+             $('#cross1').attr('style','animation: growCross1 1s  1  forwards;')
+             $('#cross2').attr('style','animation: growCross2 1s  1  forwards;')
+         }else{
+            $('#table').hide()
+            $('#circle').attr('style','animation: growCircle 1.2s 1  forwards;')
+         }
+         if(data.number==9)
+         { 
+            $('#table').hide()
+            $('#cross1').attr('style','animation: growCross1 1s  1  forwards;')
+            $('#cross2').attr('style','animation: growCross2 1s  1  forwards;')
+            $('#circle').attr('style','animation: growCircle 1.2s 1  forwards;')
+         }
         
         
-            $('#gameOver')
-            .attr('style','display: block')
-            .text(data.playerWon+' won')
+
 
        })
 

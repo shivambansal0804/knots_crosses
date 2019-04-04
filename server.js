@@ -79,6 +79,11 @@ crosses=[]
                             
                         })
                         console.log(combo)
+                    }else if((crosses.length + knots.length)==9){
+                        io.emit('gameOver',{
+                            number: 9
+                            
+                        })
                     }
                     
                 })
