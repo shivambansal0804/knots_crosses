@@ -16,7 +16,25 @@
 
 <body>
     <h1 class='align-items-center ml-5'>KNOTS and CROSSES</h1>
-    <div>
+    <div id="roomSet" class="align-items-center">
+        <div class="card">
+            <h4 class="card-header">Choose Your Path</h4>
+            <div class="card-body">
+                <ul type="none">
+                    <li><button type='submit' class=" col-4 btn btn-dark mt-4" id="createRoom">Create Room</button></li>
+                    <li><button type='submit' class=" col-4 btn btn-dark mt-4" id="joinRoom">Join Room</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="createdRoom">
+
+    </div>
+    <div id="joinedRoom">
+        <input id= "roomName" type="text">
+        <button id="sendRoomJoin">GO</button>
+    </div>
+    <div id="playerChoice">
         <div id="choosePlayer" class="form-row ml-5 mt-5">
             <label for="player"><h4>CHOOSE PLAYER</h4></label>
             <select  id="player" class="form-group col-4 ml-4">

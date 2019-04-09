@@ -21,29 +21,67 @@ $(()=>{
     socket.on('connect', () => {
         console.log('Socket created ' + socket.id)
       })
-
+ $('#playerChoice').hide()
  $('#gameBoard').hide()
- $('#submitPlayer').click(()=>{
-     console.log('clicked')
-     console.log($('#player').val())
-     $('#choosePlayer').hide()
-     $('#divButton').hide()
-     $('#gameBoard').show()
-     socket.emit('playerVal',{
-         player: $('#player').val()
-     })
-    socket.on('chooseDone',(data)=>{
-    console.log('player chosen succsfully')
-       
-        takeTurn(data.turn)
-        
+ $('#createdRoom').hide()
+ $('#joinedRoom').hide()
+ $('#createRoom').click(()=>{
+     socket.emit('createRoom')
+
+
+        $('#roomSet').hide()
+        $('#createdRoom')
+        .show()
+        .append($('<li>')
+          .text(socket.id)    
+    )
+ 
+})
+$('#joinRoom').click(()=>{
+    
+    $('#roomSet').hide()
+    $('#joinedRoom')
+    .show()
+    $('#sendRoomJoin').click(()=>{
+        socket.emit('joinRoom',{
+            id: $('#roomName').val()
+        })
+        $('#roomName').val('')
     })
     
- })
+})
+socket.on('twoPlayersIn',()=>{
+    console.log('players joined the room')
+    $('#joinedRoom').hide()
+    $('#createdRoom').hide()
+    $('#playerChoice').show()
+
+    $('#submitPlayer').click(()=>{
+            console.log('clicked')
+            console.log($('#player').val())
+            $('#choosePlayer').hide()
+            $('#divButton').hide()
+            $('#gameBoard').show()
+            socket.emit('test',{
+                msg: 'test run'
+            })
+            socket.emit('playerVal',{
+                player: $('#player').val(),
+                id: socket.id
+            })
+            socket.on('chooseDone',(data)=>{
+            console.log('player chosen succsfully')
+             console.log( 'tur is' +data.turn)
+                takeTurn(data.turn)
+                
+            })
+            
+        })
+    
+})
  function Clicked(ev){
-     console.log('clicked')
-    // if(document.getElementById(ev.target.id).innerText==''){
-    //     $('#'+ev.target.id).text(playerOne)
+     console.log('clicked on table')
+    
     if(document.getElementById(ev.target.id).innerText==''){
         socket.emit('clicked',{
             idClick: ev.target.id,
@@ -51,17 +89,7 @@ $(()=>{
             player: $('#player').val()
         })
     }
-     //    if(data.text=='x')
-     //    {
-     //    socket.emit('knOrCr',{
-     //     push: knots   })
-     // }else{
-     //     socket.emit('knOrCr',{
-     //         push: crosses
-     //     })
-     // }
-
-//  }
+     
  }
   function takeTurn(currTurn){
      
@@ -84,6 +112,7 @@ $(()=>{
         }
         else{
             socket.on('done',(data)=>{
+                console.log('done received')
                 if(data.player==1){
                     $('#'+data.id)
                     .attr('style','color: rgb(242, 235, 211)')
