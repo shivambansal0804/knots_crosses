@@ -154,3 +154,44 @@ table tr td:last-child{
     }
 
 }
+.card{
+    position: relative;
+    top: 100px;
+    left:35%;
+    width:600px;
+    height:400px;
+    background-color: lightslategrey;
+
+}
+#createRoom{
+    position: relative;
+    left:69px;
+    top:20px;
+}
+#joinRoom{
+    position: relative;
+    left:69px;
+    top:50px;
+}
+#showRoom{
+    position:relative;
+    top:100px;
+    left:200px;
+    font-size: 40px;
+}
+#createdRoom{
+    position:relative;
+    top:100px;
+    left:300px;
+    height:200px;
+    width:900px;
+    background-color: lightslategrey;
+}
+#joinedRoom{
+    position:relative;
+    top:100px;
+    left:300px;
+    height:200px;
+    width:700px;
+    
+}

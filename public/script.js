@@ -32,7 +32,8 @@ $(()=>{
         $('#roomSet').hide()
         $('#createdRoom')
         .show()
-        .append($('<li>')
+        .append($('<div>')
+          .attr('id','showRoom')
           .text(socket.id)    
     )
  
@@ -224,4 +225,5 @@ socket.on('twoPlayersIn',()=>{
 
 
 // }
+
 })
